@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'users',
     'courses',
     'auth_app',
+    'marketplace',
 ]
 
 MIDDLEWARE = [

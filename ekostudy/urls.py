@@ -23,6 +23,7 @@ urlpatterns = [
     path('api/users/', include('users.urls')),
     path('api/courses/', include('courses.urls')),
     path('api/auth/', include('auth_app.urls')),
+    path('api/', include('marketplace.urls')),
     
     # Documentation
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
