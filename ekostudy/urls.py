@@ -24,6 +24,7 @@ urlpatterns = [
     path('api/courses/', include('courses.urls')),
     path('api/auth/', include('auth_app.urls')),
     path('api/', include('marketplace.urls')),
+    path('api/', include('tutors.urls')),
     
     # Documentation
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
