@@ -141,6 +141,9 @@ class QuizAttemptViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
+        if getattr(self, 'swagger_fake_view', False):
+            # Return empty queryset for schema generation
+            return QuizAttempt.objects.none()
         return QuizAttempt.objects.filter(user=self.request.user)
 
     @action(detail=True, methods=['post'], permission_classes=[IsAuthenticated])
