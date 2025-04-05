@@ -1,6 +1,8 @@
 import os
 from pathlib import Path
 from decouple import config
+from datetime import timedelta
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -37,7 +39,7 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'django_phonenumbers',
     'django_countries',
-    'drf_yasg',
+    'drf_spectacular',
     # Local apps    
     'users',
     'courses',
@@ -140,14 +142,25 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
     ),
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10
 }
 
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'EkoStudy API',
+    'DESCRIPTION': 'EkoStudy: An online learning platform for students in the tertiary institutions. Based in Ikorodu, and established in LASUSTECH, this API is meant to serve its backend.',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    'COMPONENT_SPLIT_REQUEST': True,
+    # 'SCHEMA_PATH_PREFIX': r'/api/',
+    # 'ENUM_NAME_OVERRIDES': {
+    # },
+}
 
-# JWT Settings
-from datetime import timedelta
+
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
